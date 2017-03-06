@@ -1,0 +1,11 @@
+﻿[
+  {
+    "Code": "CRIM",
+    "Emergencies": [ "MUDER", "RAPE" ]
+  },
+
+  {
+    "Code": "NDISASTER",
+    "Emergencies": [ "STORM SURGE", "TYPHOON" ]
+  }
+]
