@@ -1,11 +1,18 @@
-﻿[
+﻿//s
+
+[
   {
     "Code": "CRIM",
     "Emergencies": [ "MUDER", "RAPE" ]
   },
 
   {
-    "Code": "NDISASTER",
+    "Code": "NDIS",
     "Emergencies": [ "STORM SURGE", "TYPHOON" ]
+  },
+
+  {
+    "Code": "FIR",
+    "Emergencies": [ "WILD FIRE", "FLAMETHROWER" ]
   }
 ]

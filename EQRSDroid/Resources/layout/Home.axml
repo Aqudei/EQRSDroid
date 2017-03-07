@@ -9,20 +9,25 @@
         android:text="FIRE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonFire" />
+        android:id="@+id/buttonFire"
+        android:textAllCaps="true"
+        android:tag="FIR" />
     <Button
         android:text="MEDICAL ASSISTANCE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonMedical" />
+        android:id="@+id/buttonMedical"
+        android:tag="MEDS" />
     <Button
         android:text="NATURAL DISASTER"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonNatDisaster" />
+        android:id="@+id/buttonNatDisaster"
+        android:tag="NDIS" />
     <Button
         android:text="CRIME"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonCrime" />
+        android:id="@+id/buttonCrime"
+        android:tag="CRIM" />
 </LinearLayout>

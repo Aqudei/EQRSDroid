@@ -23,7 +23,39 @@ namespace EQRSDroid
         // Keep track of bindings to avoid premature garbage collection
         private readonly List<Binding> _bindings = new List<Binding>();
 
-        Button fireBUtton, medsButton, crimeButton, disasterButton;
+
+
+        public Button FireButton
+        {
+            get
+            {
+                return FindViewById<Button>(Resource.Id.buttonFire);
+            }
+        }
+
+        public Button MedsButton
+        {
+            get
+            {
+                return FindViewById<Button>(Resource.Id.buttonMedical);
+            }
+        }
+
+        public Button CrimeButton
+        {
+            get
+            {
+                return FindViewById<Button>(Resource.Id.buttonCrime);
+            }
+        }
+
+        public Button NaturalDisasterButton
+        {
+            get
+            {
+                return FindViewById<Button>(Resource.Id.buttonNatDisaster);
+            }
+        }
 
         private HomeViewModel Vm
         {
@@ -33,6 +65,8 @@ namespace EQRSDroid
             }
         }
 
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -40,15 +74,27 @@ namespace EQRSDroid
             // Create your application here
             SetContentView(Resource.Layout.Home);
 
-            SimpleIoc.Default.Register<EmergenciesConfigReader>(() => new EmergenciesConfigReader(Assets.Open("emergencies.json")));
+            SimpleIoc.Default.Register(() => new EmergenciesConfigReader(Assets.Open("emergencies.json")));
 
-            fireBUtton = FindViewById<Button>(Resource.Id.buttonFire);
-            medsButton = FindViewById<Button>(Resource.Id.buttonMedical);
+            FireButton.Click += (s, e) =>
+            {
+                Vm.ReportEmergencyCommand.Execute(FireButton.Tag.ToString());
+            };
 
-            crimeButton = FindViewById<Button>(Resource.Id.buttonCrime);
-            crimeButton.SetCommand("Click", Vm.ReportCrimeCommand);
+            MedsButton.Click += (s, e) =>
+            {
+                Vm.ReportEmergencyCommand.Execute(MedsButton.Tag.ToString());
+            };
 
-            disasterButton = FindViewById<Button>(Resource.Id.buttonNatDisaster);
+            CrimeButton.Click += (s, e) =>
+            {
+                Vm.ReportEmergencyCommand.Execute(CrimeButton.Tag.ToString());
+            };
+
+            NaturalDisasterButton.Click += (s, e) =>
+            {
+                Vm.ReportEmergencyCommand.Execute(NaturalDisasterButton.Tag.ToString());
+            };
         }
     }
 }

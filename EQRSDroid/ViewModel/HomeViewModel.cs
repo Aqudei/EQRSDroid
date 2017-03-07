@@ -25,17 +25,18 @@ namespace EQRSDroid.ViewModel
             _configReader = configReader;
             _navigationService = navigationService;
         }
-        private RelayCommand _reportCrimeCommand;
+
+        private RelayCommand<string> _reportEmergencyCommand;
         private EmergenciesConfigReader _configReader;
         private INavigationService _navigationService;
 
-        public RelayCommand ReportCrimeCommand
+        public RelayCommand<string> ReportEmergencyCommand
         {
             get
             {
-                return _reportCrimeCommand ?? (_reportCrimeCommand = new RelayCommand(() =>
+                return _reportEmergencyCommand ?? (_reportEmergencyCommand = new RelayCommand<string>((typ) =>
                 {
-                    _navigationService.NavigateTo(ViewModelLocator.EmergencyListPageKey, "CRIM");
+                    _navigationService.NavigateTo(ViewModelLocator.EmergencyListPageKey, typ.ToString().ToUpper());
                 }));
             }
         }

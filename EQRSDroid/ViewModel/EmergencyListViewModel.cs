@@ -36,9 +36,12 @@ namespace EQRSDroid.ViewModel
         {
             Emergencies.Clear();
             var es = _configReader.Read(type);
-            foreach (var item in es)
+            if (es != null)
             {
-                Emergencies.Add(item);
+                foreach (var item in es)
+                {
+                    Emergencies.Add(item);
+                }
             }
         }
     }
