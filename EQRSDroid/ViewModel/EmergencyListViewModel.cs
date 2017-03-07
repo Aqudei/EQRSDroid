@@ -16,8 +16,8 @@ using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Command;
 using Plugin.Geolocator;
 using Android.Util;
-using Android.Telephony.Gsm;
 using Plugin.Messaging;
+using Android.Telephony;
 
 namespace EQRSDroid.ViewModel
 {
@@ -77,17 +77,9 @@ namespace EQRSDroid.ViewModel
 
                             Log.Debug("eqrs-log", "SMS:" + str);
 
-                            var smsMessenger = MessagingPlugin.SmsMessenger;
 
-                            if (smsMessenger.CanSendSms)
-                            {
-                                smsMessenger.SendSms(serverPhone, str);
-                                Log.Debug("eqrs-log", "Message was successfully sent");
-                            }
-                            else
-                            {
-                                Log.Debug("eqrs-log", "I can't seem to send an SMS.");
-                            }
+                            SmsManager.Default.SendTextMessage(serverPhone, null, str, null, null);
+                            Log.Debug("eqrs-log", "Message was successfully sent?");
                         }
                         catch (Exception ex)
                         {
