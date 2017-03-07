@@ -14,6 +14,7 @@ using EQRSDroid.ViewModel;
 using GalaSoft.MvvmLight.Helpers;
 using GalaSoft.MvvmLight.Ioc;
 using EQRSDroid.Utilities;
+using Android.Locations;
 
 namespace EQRSDroid
 {
@@ -73,6 +74,17 @@ namespace EQRSDroid
 
             // Create your application here
             SetContentView(Resource.Layout.Home);
+
+            LocationManager locationManager = GetSystemService(Context.LocationService) as LocationManager;
+            if (locationManager.IsProviderEnabled(LocationManager.GpsProvider))
+            {
+
+            }
+            else
+            {
+                var intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+                StartActivity(intent);
+            }
 
             SimpleIoc.Default.Register(() => new EmergenciesConfigReader(Assets.Open("emergencies.json")));
 

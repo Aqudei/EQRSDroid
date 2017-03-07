@@ -6,5 +6,6 @@
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.SEND_SMS" />
+	<uses-permission android:name="android.permission.SEND_RESPOND_VIA_MESSAGE" />
 	<application android:label="EQRSDroid" android:icon="@drawable/Icon"></application>
 </manifest>

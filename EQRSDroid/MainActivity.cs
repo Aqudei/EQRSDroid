@@ -5,6 +5,8 @@ using GalaSoft.MvvmLight.Helpers;
 using GalaSoft.MvvmLight.Messaging;
 using EQRSDroid.ViewModel;
 using Messenger = GalaSoft.MvvmLight.Messaging.Messenger;
+using Android.Locations;
+using Android.Content;
 
 namespace EQRSDroid
 {
@@ -25,6 +27,9 @@ namespace EQRSDroid
             }
         }
 
+
+
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -32,11 +37,13 @@ namespace EQRSDroid
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
+            
+
             // Illustrates how to use the Messenger by receiving a message
             // and sending a message back.
             Messenger.Default.Register<NotificationMessageAction<string>>(
-                this,
-                HandleNotificationMessage);
+        this,
+        HandleNotificationMessage);
 
             // Binding and commanding
 

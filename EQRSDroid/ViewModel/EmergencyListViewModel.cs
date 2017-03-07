@@ -16,13 +16,14 @@ using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight.Command;
 using Plugin.Geolocator;
 using Android.Util;
-using Android.Telephony;
+using Android.Telephony.Gsm;
+using Plugin.Messaging;
 
 namespace EQRSDroid.ViewModel
 {
     public class EmergencyListViewModel : ViewModelBase
     {
-        public const string serverPhone = "+639463920954";
+        public const string serverPhone = "+639499394644";
 
         private EmergenciesConfigReader _configReader;
         private INavigationService _navigationService;
@@ -69,19 +70,29 @@ namespace EQRSDroid.ViewModel
                         try
                         {
                             var locator = CrossGeolocator.Current;
-                            var position = await locator.GetPositionAsync(timeoutMilliseconds: 60000);
+                            var position = await locator.GetPositionAsync(timeoutMilliseconds: 960000);
 
                             var str = string.Format("{0}::{1}::{2}::{3}", responderCode.ToUpper(), string.Join(", ", egs),
                                 position.Latitude, position.Longitude);
 
-                            Android.Util.Log.Debug("sending", str);
-                            SmsManager.Default.SendTextMessage(serverPhone, null, "str", null, null);
+                            Log.Debug("eqrs-log", "SMS:" + str);
+
+                            var smsMessenger = MessagingPlugin.SmsMessenger;
+
+                            if (smsMessenger.CanSendSms)
+                            {
+                                smsMessenger.SendSms(serverPhone, str);
+                                Log.Debug("eqrs-log", "Message was successfully sent");
+                            }
+                            else
+                            {
+                                Log.Debug("eqrs-log", "I can't seem to send an SMS.");
+                            }
                         }
                         catch (Exception ex)
                         {
-                            Log.Debug("archie", ex.Message);
+                            Log.Debug("eqrs-log", ex.Message);
                         }
-
                     }));
             }
         }
