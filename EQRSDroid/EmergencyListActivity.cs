@@ -12,7 +12,8 @@ using Android.Widget;
 using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Helpers;
-
+using System.Diagnostics;
+using Android.Util;
 
 namespace EQRSDroid
 {
@@ -20,8 +21,14 @@ namespace EQRSDroid
     public class EmergencyListActivity : ActivityBase
     {
 
-        ListView emergencies;
-        Button report;
+        private ListView emergencies;
+        public Button ReportButton
+        {
+            get
+            {
+                return FindViewById<Button>(Resource.Id.buttonReport);
+            }
+        }
 
         public ViewModel.EmergencyListViewModel Vm
         {
@@ -40,9 +47,28 @@ namespace EQRSDroid
             Vm.LoadEmergencies(nav.GetAndRemoveParameter<string>(Intent));
 
             emergencies = FindViewById<ListView>(Resource.Id.listViewEmergencies);
-            report = FindViewById<Button>(Resource.Id.buttonReport);
 
             emergencies.Adapter = Vm.Emergencies.GetAdapter(EmergencyAdapter);
+
+            ReportButton.Click += (s, e) =>
+            {
+                GetCheckedItemsAndPasstoVm();
+            };
+        }
+
+        private void GetCheckedItemsAndPasstoVm()
+        {
+            var lst = new List<string>();
+            for (int i = 0; i < emergencies.Count; i++)
+            {
+                var view = emergencies.GetChildAt(i);
+                var cb = view.FindViewById<CheckBox>(Resource.Id.checkBox1);
+                if (cb.Checked)
+                {
+                    lst.Add(cb.Text);
+                }
+            }
+            Vm.ReportNowCommand.Execute(lst);
         }
 
         private View EmergencyAdapter(int position, string emergency, View convertView)
