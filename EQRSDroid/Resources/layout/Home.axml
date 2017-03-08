@@ -5,29 +5,44 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:text="FIRE"
-        android:layout_width="match_parent"
+    <GridLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonFire"
-        android:textAllCaps="true"
-        android:tag="FIR" />
-    <Button
-        android:text="MEDICAL ASSISTANCE"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonMedical"
-        android:tag="MEDS" />
-    <Button
-        android:text="NATURAL DISASTER"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonNatDisaster"
-        android:tag="NDIS" />
-    <Button
-        android:text="CRIME"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonCrime"
-        android:tag="CRIM" />
+        android:id="@+id/gridLayout1"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:layout_gravity="center">
+        <ImageButton
+            android:src="@drawable/fire"
+            android:id="@+id/buttonFire"
+            android:scaleType="fitCenter"
+            android:layout_width="256px"
+            android:layout_height="256px"
+            android:layout_gravity="center"
+            android:tag="FIR" />
+        <ImageButton
+            android:src="@drawable/meds"
+            android:id="@+id/buttonMedical"
+            android:scaleType="fitCenter"
+            android:layout_width="256px"
+            android:layout_height="256px"
+            android:layout_gravity="center"
+            android:tag="MEDS" />
+        <ImageButton
+            android:src="@drawable/police"
+            android:id="@+id/buttonCrime"
+            android:scaleType="fitCenter"
+            android:layout_width="256px"
+            android:layout_height="256px"
+            android:layout_gravity="center"
+            android:tag="CRIM" />
+        <ImageButton
+            android:src="@drawable/ndis"
+            android:id="@+id/buttonNatDisaster"
+            android:scaleType="fitCenter"
+            android:layout_width="256px"
+            android:layout_height="256px"
+            android:layout_gravity="center"
+            android:tag="NDIS" />
+    </GridLayout>
 </LinearLayout>

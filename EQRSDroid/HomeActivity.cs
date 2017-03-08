@@ -18,7 +18,7 @@ using Android.Locations;
 
 namespace EQRSDroid
 {
-    [Activity(Label = "HomeActivity", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "EQRS", Theme = "@android:style/Theme.Light", MainLauncher = true, Icon = "@drawable/icon")]
     public class HomeActivity : ActivityBase
     {
         // Keep track of bindings to avoid premature garbage collection
@@ -26,35 +26,35 @@ namespace EQRSDroid
 
 
 
-        public Button FireButton
+        public ImageButton FireButton
         {
             get
             {
-                return FindViewById<Button>(Resource.Id.buttonFire);
+                return FindViewById<ImageButton>(Resource.Id.buttonFire);
             }
         }
 
-        public Button MedsButton
+        public ImageButton MedsButton
         {
             get
             {
-                return FindViewById<Button>(Resource.Id.buttonMedical);
+                return FindViewById<ImageButton>(Resource.Id.buttonMedical);
             }
         }
 
-        public Button CrimeButton
+        public ImageButton CrimeButton
         {
             get
             {
-                return FindViewById<Button>(Resource.Id.buttonCrime);
+                return FindViewById<ImageButton>(Resource.Id.buttonCrime);
             }
         }
 
-        public Button NaturalDisasterButton
+        public ImageButton NaturalDisasterButton
         {
             get
             {
-                return FindViewById<Button>(Resource.Id.buttonNatDisaster);
+                return FindViewById<ImageButton>(Resource.Id.buttonNatDisaster);
             }
         }
 
@@ -65,8 +65,6 @@ namespace EQRSDroid
                 return App.Locator.Home;
             }
         }
-
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

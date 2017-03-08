@@ -18,6 +18,7 @@ using Plugin.Geolocator;
 using Android.Util;
 using Plugin.Messaging;
 using Android.Telephony;
+using static Android.Content.Res.Resources;
 
 namespace EQRSDroid.ViewModel
 {
@@ -76,7 +77,6 @@ namespace EQRSDroid.ViewModel
                                 position.Latitude, position.Longitude);
 
                             Log.Debug("eqrs-log", "SMS:" + str);
-
 
                             SmsManager.Default.SendTextMessage(serverPhone, null, str, null, null);
                             Log.Debug("eqrs-log", "Message was successfully sent?");

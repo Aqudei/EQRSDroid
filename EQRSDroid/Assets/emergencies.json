@@ -3,16 +3,21 @@
 [
   {
     "Code": "CRIM",
-    "Emergencies": [ "MUDER", "RAPE" ]
+    "Emergencies": [ "MUDER", "RAPE", "THEFT", "ROBBERY" ]
   },
 
   {
     "Code": "NDIS",
-    "Emergencies": [ "STORM SURGE", "TYPHOON" ]
+    "Emergencies": [ "STORM SURGE", "TYPHOON", "LANDSLIDE", "EARTHQUAKE", "TSUNAMI" ]
   },
 
   {
     "Code": "FIR",
     "Emergencies": [ "WILD FIRE", "FLAMETHROWER" ]
+  },
+
+  {
+    "Code": "MEDS",
+    "Emergencies": [ "HEART ATTACK", "BURN", "VEHICLE ACCIDENT" , "HEAVY WOUND", "BLOOD LOSS" ]
   }
 ]
