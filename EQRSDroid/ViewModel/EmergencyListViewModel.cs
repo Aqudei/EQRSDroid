@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,14 +10,19 @@ using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GalaSoft.MvvmLight.Messaging;
+using GalaSoft.MvvmLight.Helpers;
+using Microsoft.Practices.ServiceLocation;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Threading;
 using EQRSDroid.Utilities;
 using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Command;
 using Plugin.Geolocator;
 using Android.Util;
 using Plugin.Messaging;
 using Android.Telephony;
 using static Android.Content.Res.Resources;
+
 
 namespace EQRSDroid.ViewModel
 {
@@ -36,7 +40,7 @@ namespace EQRSDroid.ViewModel
         {
             _navigationService = navigationService;
             _configReader = configReader;
-
+           
             Emergencies = new ObservableCollection<string>();
         }
 
@@ -51,8 +55,18 @@ namespace EQRSDroid.ViewModel
                 {
                     Emergencies.Add(item);
                 }
+                
             }
         }
+
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { Set(ref _isBusy, value); }
+        }
+
 
         private RelayCommand<IList<string>> _reportNowCommand;
         private string responderCode;
@@ -70,6 +84,7 @@ namespace EQRSDroid.ViewModel
                     {
                         try
                         {
+                            IsBusy = true;
                             var locator = CrossGeolocator.Current;
                             var position = await locator.GetPositionAsync(timeoutMilliseconds: 960000);
 
@@ -80,6 +95,9 @@ namespace EQRSDroid.ViewModel
 
                             SmsManager.Default.SendTextMessage(serverPhone, null, str, null, null);
                             Log.Debug("eqrs-log", "Message was successfully sent?");
+                            IsBusy = false;
+
+                            GalaSoft.MvvmLight.Messaging.Messenger.Default.Send(new NotificationMessage("done-sending"));
                         }
                         catch (Exception ex)
                         {

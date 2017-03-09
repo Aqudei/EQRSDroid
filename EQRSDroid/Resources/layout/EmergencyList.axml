@@ -13,6 +13,11 @@
         p1:minWidth="25px"
         p1:minHeight="25px"
         p1:layout_width="match_parent"
-        p1:layout_height="match_parent"
+        p1:layout_height="wrap_content"
         p1:id="@+id/listViewEmergencies" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        p1:layout_width="match_parent"
+        p1:layout_height="wrap_content"
+        p1:id="@+id/progressBar1" />
 </LinearLayout>

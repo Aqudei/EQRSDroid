@@ -14,12 +14,14 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Helpers;
 using System.Diagnostics;
 using Android.Util;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace EQRSDroid
 {
     [Activity(Label = "EmergencyListActivity")]
     public class EmergencyListActivity : ActivityBase
     {
+        private readonly List<Binding> _bindings = new List<Binding>();
 
         private ListView emergencies;
         public Button ReportButton
@@ -37,6 +39,15 @@ namespace EQRSDroid
                 return App.Locator.EmergencyList;
             }
         }
+
+        public ProgressBar loading
+        {
+            get
+            {
+                return FindViewById<ProgressBar>(Resource.Id.progressBar1);
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -48,12 +59,38 @@ namespace EQRSDroid
 
             emergencies = FindViewById<ListView>(Resource.Id.listViewEmergencies);
 
+            _bindings.Add(this.SetBinding(() => Vm.IsBusy).WhenSourceChanges(() =>
+            {
+                if (Vm.IsBusy)
+                {
+                    loading.Visibility = ViewStates.Visible;
+                }
+                else
+                {
+                    loading.Visibility = ViewStates.Invisible;
+                }
+            }));
+
             emergencies.Adapter = Vm.Emergencies.GetAdapter(EmergencyAdapter);
 
             ReportButton.Click += (s, e) =>
             {
                 GetCheckedItemsAndPasstoVm();
             };
+
+            GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<NotificationMessage>(this, HandleDoneSending);
+        }
+
+        private void HandleDoneSending(NotificationMessage obj)
+        {
+            if (obj.Notification == "done-sending")
+            {
+                AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                alert.SetTitle("Done sending");
+                alert.SetMessage("Please wait for your rescue.");                
+                Dialog dialog = alert.Create();
+                dialog.Show();
+            }
         }
 
         private void GetCheckedItemsAndPasstoVm()

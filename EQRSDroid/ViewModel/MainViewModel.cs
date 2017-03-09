@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Helpers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -144,7 +145,7 @@ namespace EQRSDroid.ViewModel
         {
             _dataService = dataService;
             _navigationService = navigationService;
-
+            
             _dataService.GetData(
                 (item, error) =>
                 {
