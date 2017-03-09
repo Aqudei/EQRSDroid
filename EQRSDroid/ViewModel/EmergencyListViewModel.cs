@@ -19,7 +19,6 @@ using EQRSDroid.Utilities;
 using System.Collections.ObjectModel;
 using Plugin.Geolocator;
 using Android.Util;
-using Plugin.Messaging;
 using Android.Telephony;
 using static Android.Content.Res.Resources;
 

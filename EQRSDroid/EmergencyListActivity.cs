@@ -18,7 +18,7 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace EQRSDroid
 {
-    [Activity(Label = "EmergencyListActivity")]
+    [Activity(Label = "Emergency Info")]
     public class EmergencyListActivity : ActivityBase
     {
         private readonly List<Binding> _bindings = new List<Binding>();
