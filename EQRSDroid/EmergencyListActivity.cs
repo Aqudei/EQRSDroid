@@ -85,13 +85,11 @@ namespace EQRSDroid
         {
             if (obj.Notification == "done-sending")
             {
-                AlertDialog.Builder alert = new AlertDialog.Builder(this);
-                alert.SetTitle("Done sending");
-                alert.SetMessage("Please wait for your rescue.");                
-                Dialog dialog = alert.Create();
-                dialog.Show();
+                Toast.MakeText(this, "Done Sending", ToastLength.Long).Show();
             }
         }
+
+
 
         private void GetCheckedItemsAndPasstoVm()
         {

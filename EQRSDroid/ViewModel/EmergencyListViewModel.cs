@@ -96,7 +96,7 @@ namespace EQRSDroid.ViewModel
                             SmsManager.Default.SendTextMessage(serverPhone, null, str, null, null);
                             Log.Debug("eqrs-log", "Message was successfully sent?");
                             IsBusy = false;
-
+                            
                             GalaSoft.MvvmLight.Messaging.Messenger.Default.Send(new NotificationMessage("done-sending"));
                         }
                         catch (Exception ex)

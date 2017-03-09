@@ -24,8 +24,6 @@ namespace EQRSDroid
         // Keep track of bindings to avoid premature garbage collection
         private readonly List<Binding> _bindings = new List<Binding>();
 
-
-
         public ImageButton FireButton
         {
             get
@@ -66,6 +64,17 @@ namespace EQRSDroid
             }
         }
 
+        protected override void OnStart()
+        {
+            base.OnStart();
+            LocationManager locationManager = GetSystemService(Context.LocationService) as LocationManager;
+            if (locationManager.IsProviderEnabled(LocationManager.GpsProvider) == false)
+            {
+                var intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
+                StartActivity(intent);
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -73,18 +82,8 @@ namespace EQRSDroid
             // Create your application here
             SetContentView(Resource.Layout.Home);
 
-            LocationManager locationManager = GetSystemService(Context.LocationService) as LocationManager;
-            if (locationManager.IsProviderEnabled(LocationManager.GpsProvider))
-            {
-
-            }
-            else
-            {
-                var intent = new Intent(Android.Provider.Settings.ActionLocationSourceSettings);
-                StartActivity(intent);
-            }
-
-            SimpleIoc.Default.Register(() => new EmergenciesConfigReader(Assets.Open("emergencies.json")));
+            if (SimpleIoc.Default.IsRegistered<EmergenciesConfigReader>() == false)
+                SimpleIoc.Default.Register(() => new EmergenciesConfigReader(Assets.Open("emergencies.json")));
 
             FireButton.Click += (s, e) =>
             {
