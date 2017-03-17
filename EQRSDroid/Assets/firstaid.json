@@ -1,14 +1,14 @@
 ﻿[
   {
-    "Title": "uwauwa",
+    "Title": "Nasugatan ang puso.",
     "Content": "content 1"
   },
   {
-    "Title": "aaaa",
+    "Title": "Nasaktan an damdamin.",
     "Content": "bsds"
   },
   {
-    "Title": "ddw",
-    "Content": "xxxxxx\nyyy\n"
+    "Title": "Nahulog sa iyo.",
+    "Content": "line1 \n line2 \n line3" // '\n' an pag newline
   }
 ]
