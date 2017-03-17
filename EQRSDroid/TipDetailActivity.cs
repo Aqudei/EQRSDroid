@@ -15,7 +15,7 @@ using EQRSDroid.Model;
 
 namespace EQRSDroid
 {
-    [Activity(Label = "TipDetailActivity")]
+    [Activity(Label = "First Aid Tip Info")]
     public class TipDetailActivity : ActivityBase
     {
         protected override void OnCreate(Bundle savedInstanceState)

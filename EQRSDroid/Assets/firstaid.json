@@ -9,6 +9,6 @@
   },
   {
     "Title": "Nahulog sa iyo.",
-    "Content": "line1 \n line2 \n line3" // '\n' an pag newline
+    "Content": "line1 \nline2 \nline3" // "\n" an pag newline
   }
 ]

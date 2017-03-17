@@ -26,6 +26,7 @@ namespace EQRSDroid
                     nav.Configure(ViewModelLocator.EmergencyListPageKey, typeof(EmergencyListActivity));
                     nav.Configure(ViewModelLocator.TipsPageKey, typeof(TipsActivity));
                     nav.Configure(ViewModelLocator.TipDetailKey, typeof(TipDetailActivity));
+                    nav.Configure(ViewModelLocator.AboutPageKey, typeof(AboutActivity));
 
                     // Register the MVVM Light DialogService
                     SimpleIoc.Default.Register<IDialogService, DialogService>();

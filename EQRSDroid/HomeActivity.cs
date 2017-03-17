@@ -117,6 +117,9 @@ namespace EQRSDroid
             {
                 Vm.ReportEmergencyCommand.Execute(NaturalDisasterButton.Tag.ToString());
             };
+
+            var about = FindViewById<Button>(Resource.Id.buttonAbout);
+            about.SetCommand("Click", Vm.AboutCommand);
         }
     }
 }

@@ -52,5 +52,19 @@ namespace EQRSDroid.ViewModel
                 }));
             }
         }
+
+        private RelayCommand _aboutCommand;
+
+        public RelayCommand AboutCommand
+        {
+            get
+            {
+                return _aboutCommand ?? (_aboutCommand = new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.AboutPageKey);
+                }));
+            }
+        }
+
     }
 }

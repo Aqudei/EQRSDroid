@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">$safeprojectname$.Droid</string>
+  <string name="Hello">Hello World, Click Me!</string>
+  <string name="Quote">Take a Closer Look, \nBecause the Closer You Look, \nthe Less You\'ll See.</string>
+  <string name="ApplicationName">$safeprojectname$.Droid</string>
+
 </resources>

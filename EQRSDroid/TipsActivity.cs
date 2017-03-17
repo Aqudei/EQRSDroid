@@ -19,7 +19,7 @@ using Android.Util;
 
 namespace EQRSDroid
 {
-    [Activity(Label = "TipsActivity")]
+    [Activity(Label = "List of First Aid Tips")]
     public class TipsActivity : ActivityBase, AdapterView.IOnItemClickListener
     {
 

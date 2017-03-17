@@ -24,6 +24,7 @@ namespace EQRSDroid.ViewModel
         public const string EmergencyListPageKey = "EmergencyListPage";
         public const string TipsPageKey = "TipsPage";
         public const string TipDetailKey = "TipDetail";
+        public const string AboutPageKey = "AboutPage";
 
         /// <summary>
         /// Gets the Main property.

@@ -133,6 +133,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutActivity.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="EmergencyListActivity.cs" />
@@ -187,6 +188,9 @@
     <AndroidResource Include="Resources\layout\TipDetail.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\About.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -216,7 +220,7 @@
     <AndroidAsset Include="Assets\firstaid.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\menu\" />
+    <AndroidResource Include="Resources\drawable\nowUseeMe.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
