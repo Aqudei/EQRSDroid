@@ -22,6 +22,8 @@ namespace EQRSDroid.ViewModel
         /// </summary>
         public const string SecondPageKey = "SecondPage";
         public const string EmergencyListPageKey = "EmergencyListPage";
+        public const string TipsPageKey = "TipsPage";
+        public const string TipDetailKey = "TipDetail";
 
         /// <summary>
         /// Gets the Main property.
@@ -50,6 +52,14 @@ namespace EQRSDroid.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<HomeViewModel>();
+            }
+        }
+
+        public TipsViewModel Tips
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<TipsViewModel>();
             }
         }
 
@@ -83,6 +93,7 @@ namespace EQRSDroid.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<EmergencyListViewModel>();
+            SimpleIoc.Default.Register<TipsViewModel>();
         }
 
         /// <summary>

@@ -32,6 +32,8 @@ namespace EQRSDroid
             }
         }
 
+
+
         public ImageButton MedsButton
         {
             get
@@ -75,6 +77,14 @@ namespace EQRSDroid
             }
         }
 
+        public Button FirstAidButton
+        {
+            get
+            {
+                return FindViewById<Button>(Resource.Id.buttonFAid);
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -84,6 +94,9 @@ namespace EQRSDroid
 
             if (SimpleIoc.Default.IsRegistered<EmergenciesConfigReader>() == false)
                 SimpleIoc.Default.Register(() => new EmergenciesConfigReader(Assets.Open("emergencies.json")));
+
+            FirstAidButton.SetCommand("Click", Vm.ShowFirstAidTipsCommand);
+
 
             FireButton.Click += (s, e) =>
             {

@@ -29,6 +29,7 @@ namespace EQRSDroid.ViewModel
         private RelayCommand<string> _reportEmergencyCommand;
         private EmergenciesConfigReader _configReader;
         private INavigationService _navigationService;
+        private RelayCommand _showFirstAidTipsCommand;
 
         public RelayCommand<string> ReportEmergencyCommand
         {
@@ -37,6 +38,17 @@ namespace EQRSDroid.ViewModel
                 return _reportEmergencyCommand ?? (_reportEmergencyCommand = new RelayCommand<string>((typ) =>
                 {
                     _navigationService.NavigateTo(ViewModelLocator.EmergencyListPageKey, typ.ToString().ToUpper());
+                }));
+            }
+        }
+
+        public RelayCommand ShowFirstAidTipsCommand
+        {
+            get
+            {
+                return _showFirstAidTipsCommand ?? (_showFirstAidTipsCommand = new RelayCommand(() =>
+                {
+                    _navigationService.NavigateTo(ViewModelLocator.TipsPageKey);
                 }));
             }
         }
